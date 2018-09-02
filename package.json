@@ -1,0 +1,22 @@
+{
+  "name": "dashboard-ira",
+  "version": "0.0.0",
+  "private": true,
+  "scripts": {
+    "start": "node ./bin/www"
+  },
+  "dependencies": {
+    "axios": "^0.18.0",
+    "body-parser": "~1.18.2",
+    "bootstrap3": "^3.3.5",
+    "cookie-parser": "~1.4.3",
+    "debug": "~2.6.9",
+    "express": "~4.15.5",
+    "gentelella": "^1.4.0",
+    "hbs": "~4.0.1",
+    "json2xls": "^0.1.2",
+    "morgan": "~1.9.0",
+    "mysql": "^2.16.0",
+    "serve-favicon": "~2.4.5"
+  }
+}
