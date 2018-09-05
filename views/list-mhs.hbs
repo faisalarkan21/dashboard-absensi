@@ -4,7 +4,6 @@
               <div class="title_left">
                 <h3>List Mahasiswa</h3>
               </div>
-
               <div class="title_right">
                 <div class="col-md-5 col-sm-5 col-xs-12 form-group pull-right top_search">
                   <div class="input-group">
@@ -16,7 +15,7 @@
                 </div>
               </div>
             </div>
-
+            <a class="btn btn-raised btn-info" href="/add-mhs">Tambah Mahasiswa</a>
             <div class="clearfix"></div>
             <div class="row">
               <div class="col-md-11 col-sm-11 col-xs-11">
@@ -75,8 +74,8 @@
 
 
 
-                        <td id="btn-edit" class="tengah text-center"> <a class="btn btn-raised btn-info" href="/admin/dashboard/trainer/{{this.trainer_id}}">Update</a></td>
-                        <td id="btn-edit" class="tengah text-center"> <a class="btn btn-raised btn-info" href="/admin/dashboard/trainer/{{this.trainer_id}}">Delete</a></td>
+                        <td id="btn-edit" class="tengah text-center"> <a class="btn btn-raised btn-info" href="/update-mhs/{{this.npm}}">Update</a></td>
+                        <td class="tengah text-center"> <a  id="btn-delete" onclick="deleteById({{this.npm}})" class="btn btn-raised btn-info">Delete</a></td>
                         {{/each}}
                       </tbody>
                     </table>
