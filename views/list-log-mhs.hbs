@@ -34,11 +34,10 @@
                         <tr>
                           <th>#</th>
                           <th>NPM</th>
-                          <th>Mata Kuliah</th>
-                          <th>Longitude</th>
-                          <th>Latitude</th>
+                          <th>Mata Kuliah</th>      
+                          <th>Kelas</th>                   
                           <th>Alamat</th>
-                          <th>Action</th>
+                          <th>Waktu</th>                          
                         </tr>
                       </thead>
                       <tbody>
@@ -51,18 +50,18 @@
                             {{this.npm}}
                         </td>
                          <td>
-                            {{this.id_jadwal_kelas}}
-                        </td>
-                         <td>
-                            {{this.longitude}}
-                        </td>
-
+                            {{this.matkul}}
+                        </td>   
                         <td>
-                            {{this.latitude}}
-                        </td>
+                            {{this.kelas}}
+                        </td>                        
 
                         <td>
                             {{this.alamat}}
+                        </td>
+
+                       <td>
+                            {{this.date_on_sign}}
                         </td>
 
 
@@ -73,8 +72,6 @@
 
 
 
-                        <td id="btn-edit" class="tengah text-center"> <a class="btn btn-raised btn-info" href="/admin/dashboard/trainer/{{this.trainer_id}}">Update</a></td>
-                        <td id="btn-edit" class="tengah text-center"> <a class="btn btn-raised btn-info" href="/admin/dashboard/trainer/{{this.trainer_id}}">Delete</a></td>
                         {{/each}}
                       </tbody>
                     </table>
