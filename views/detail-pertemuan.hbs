@@ -1,20 +1,7 @@
  <div class="right_col" role="main">
           <div class="">
             <div class="page-title">
-              <div class="title_left">
-                <h3>Update Data Dosen</h3>
-              </div>
-
-              <div class="title_right">
-                <div class="col-md-5 col-sm-5 col-xs-12 form-group pull-right top_search">
-                  <div class="input-group">
-                    <input type="text" class="form-control" placeholder="Search for...">
-                    <span class="input-group-btn">
-                              <button class="btn btn-default" type="button">Go!</button>
-                          </span>
-                  </div>
-                </div>
-              </div>
+              
             </div>
             <div class="clearfix"></div>
 
@@ -22,7 +9,7 @@
               <div class="col-md-12 col-sm-12 col-xs-12">
                 <div class="x_panel">
                   <div class="x_title">
-                    <h2>Form Dosen</h2>
+                    <h2>Detail Log</h2>
 
                     <div class="clearfix"></div>
                   </div>
@@ -30,9 +17,8 @@
 
                     <form action="/users/update-dsn" method="POST" class="form-horizontal form-label-left" novalidate>
 
-                      <p>Isi form penambahan Dosen dibawah ini : </p>
-                      
-                      <span class="section">Data Diri Pribadi</span>
+                                          
+                      <span class="section">Detail Petermuan</span>
                      
                       <div class="item form-group">
                          <p style="color:red">{{error}}</p>
@@ -40,7 +26,7 @@
                         <label class="control-label col-md-3 col-sm-3 col-xs-12" for="name">Name <span class="required">*</span>
                         </label>
                         <div class="col-md-6 col-sm-6 col-xs-12">
-                          <input value="{{getData.nama}}" id="name" class="form-control col-md-7 col-xs-12" data-validate-length-range="6" data-validate-words="2" name="nama" placeholder="Nama Dosen" required="required" type="text">
+                          <input readonly value="{{getData.nip}}" id="name" class="form-control col-md-7 col-xs-12" data-validate-length-range="6" data-validate-words="2" name="nama" placeholder="Nama Dosen" required="required" type="text">
                         </div>
                       </div>
                       <div class="item form-group">
@@ -58,20 +44,46 @@
                           <input readonly value="{{getData.nip}}" type="text" id="number" name="nip" placeholder="53414811" required="required" data-validate-minmax="10,100" class="form-control col-md-7 col-xs-12">
                         </div>
                       </div>
+
+                   
+
+                    <div class="item form-group">
+                        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="number">Longitude <span class="required">*</span>
+                        </label>
+                        <div class="col-md-6 col-sm-6 col-xs-12">
+                          <input readonly value="{{getData.longitude}}" type="text" id="number" name="nip" placeholder="53414811" required="required" data-validate-minmax="10,100" class="form-control col-md-7 col-xs-12">
+                        </div>
+                      </div>
+
+                    <div class="item form-group">
+                        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="number">Latitude <span class="required">*</span>
+                        </label>
+                        <div class="col-md-6 col-sm-6 col-xs-12">
+                          <input readonly value="{{getData.latitude}}" type="text" id="number" name="nip" placeholder="53414811" required="required" data-validate-minmax="10,100" class="form-control col-md-7 col-xs-12">
+                        </div>
+                      </div>
+
+                    <div class="item form-group">
+                        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="number">Waktu Penyimpanan Lokasi <span class="required">*</span>
+                        </label>
+                        <div class="col-md-6 col-sm-6 col-xs-12">
+                          <input readonly value="{{getData.date_on_sign}}" type="text" id="number" name="nip" placeholder="53414811" required="required" data-validate-minmax="10,100" class="form-control col-md-7 col-xs-12">
+                        </div>
+                      </div>                   
+                     
                      
                       <div class="item form-group">
                         <label class="control-label col-md-3 col-sm-3 col-xs-12" for="textarea">Alamat <span class="required">*</span>
                         </label>
                         <div class="col-md-6 col-sm-6 col-xs-12">
-                          <textarea  id="textarea" required="required" name="alamat" class="form-control col-md-7 col-xs-12">{{getData.alamat}}</textarea>
+                          <textarea  id="textarea" required="required" name="alamat" class="form-control col-md-7 col-xs-12">{{getData.address}}</textarea>
                         </div>
                       </div>
                      
                       <div class="ln_solid"></div>
                       <div class="form-group">
                         <div class="col-md-6 col-md-offset-3">
-                          <button type="submit" class="btn btn-primary">Cancel</button>
-                          <button id="send" type="submit" class="btn btn-success">Submit</button>
+                          <a href="/users/list-pertemuan" class="btn btn-primary">Kembali</a>                         
                         </div>
                       </div>
                     </form>

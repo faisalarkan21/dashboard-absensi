@@ -14,12 +14,13 @@
 
 
   <link rel="stylesheet" href="/gentelella/build/css/custom.min.css">
+    <link rel="stylesheet" href="/stylesheets/style.css">
 
 
   <title>Skripsi</title>
 </head>
 
-<body class="nav-md">
+<body id="nav-hide" class="nav-md">
   <div class="container body">
     <div class="main_container">
       <div class="col-md-3 left_col">
@@ -35,11 +36,11 @@
           <!-- menu profile quick info -->
           <div class="profile clearfix">
             <div class="profile_pic">
-              <img src="/images/man.png" alt="..." class="img-circle profile_img">
+              <img src="/images/team.png" alt="..." class="img-circle profile_img">
             </div>
             <div class="profile_info">
-              <span>Welcome,</span>
-              <h2>John Doe</h2>
+              <span>Selamat Datang,</span>
+              <h2>{{{user.name}}}</h2>
             </div>
             <div class="clearfix"></div>
           </div>
@@ -50,8 +51,19 @@
           <!-- sidebar menu -->
           <div id="sidebar-menu" class="main_menu_side hidden-print main_menu">
             <div class="menu_section">
-              <h3>General</h3>
+              <h3>Menu Pilihan</h3>
               <ul class="nav side-menu">
+              <li>
+                  <a>
+                    <i class="fa fa-book"></i> Petemuan
+                    <span class="fa fa-chevron-down"></span>
+                  </a>
+                  <ul class="nav child_menu">
+                    <li>
+                      <a href="/users/list-pertemuan">List Pertemuan</a>
+                    </li>
+                  </ul>
+                </li>
                 <li>
                   <a>
                     <i class="fa fa-user"></i> Mahasiswa
@@ -59,7 +71,7 @@
                   </a>
                   <ul class="nav child_menu">
                     <li>
-                      <a href="/list-mahasiswa">List Mahasiswa</a>
+                      <a href="/users/list-mahasiswa">List Mahasiswa</a>
                     </li>
                   </ul>
                 </li>
@@ -70,7 +82,7 @@
                   </a>
                   <ul class="nav child_menu">
                     <li>
-                      <a href="/list-dosen">List Dosen</a>
+                      <a href="/users/list-dosen">List Dosen</a>
                     </li>
                   </ul>
                 </li>
@@ -81,10 +93,10 @@
                   </a>
                   <ul class="nav child_menu">
                     <li>
-                      <a href="/list-log-mahasiswa">Absensi Mahasiswa</a>
+                      <a href="/users/list-log-mahasiswa">Absensi Mahasiswa</a>
                     </li>
                     <li>
-                      <a href="/list-log-dosen">Absensi Dosen</a>
+                      <a href="/users/list-log-dosen">Absensi Dosen</a>
                     </li>
 
                   </ul>
@@ -188,7 +200,7 @@
           <!-- /sidebar menu -->
 
           <!-- /menu footer buttons -->
-          <div class="sidebar-footer hidden-small">
+          {{!-- <div class="sidebar-footer hidden-small">
             <a data-toggle="tooltip" data-placement="top" title="Settings">
               <span class="glyphicon glyphicon-cog" aria-hidden="true"></span>
             </a>
@@ -201,7 +213,7 @@
             <a data-toggle="tooltip" data-placement="top" title="Logout" href="login.html">
               <span class="glyphicon glyphicon-off" aria-hidden="true"></span>
             </a>
-          </div>
+          </div> --}}
           <!-- /menu footer buttons -->
         </div>
       </div>
@@ -219,34 +231,20 @@
             <ul class="nav navbar-nav navbar-right">
               <li class="">
                 <a href="javascript:;" class="user-profile dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
-                  <img src="/images/man.png" alt="">John Doe
+                  <img src="/images/team.png" alt="">{{{user.name}}}
                   <span class=" fa fa-angle-down"></span>
                 </a>
                 <ul class="dropdown-menu dropdown-usermenu pull-right">
+  
                   <li>
-                    <a href="javascript:;"> Profile</a>
-                  </li>
-                  <li>
-                    <a href="javascript:;">
-                      <span class="badge bg-red pull-right">50%</span>
-                      <span>Settings</span>
-                    </a>
-                  </li>
-                  <li>
-                    <a href="javascript:;">Help</a>
-                  </li>
-                  <li>
-                    <a href="login.html">
+                    <a href="/users/logout">
                       <i class="fa fa-sign-out pull-right"></i> Log Out</a>
                   </li>
                 </ul>
               </li>
 
               <li role="presentation" class="dropdown">
-                <a href="javascript:;" class="dropdown-toggle info-number" data-toggle="dropdown" aria-expanded="false">
-                  <i class="fa fa-envelope-o"></i>
-                  <span class="badge bg-green">6</span>
-                </a>
+
                 <ul id="menu1" class="dropdown-menu list-unstyled msg_list" role="menu">
                   <li>
                     <a>
@@ -323,11 +321,7 @@
       {{{body}}}
 
       <footer>
-        <div class="pull-right">
-          Gentelella - Bootstrap Admin Template by
-          <a href="https://colorlib.com">Colorlib</a>
-        </div>
-        <div class="clearfix"></div>
+
       </footer>
 
 
@@ -368,12 +362,12 @@
           $.ajax({
             type: 'GET',
             contentType: "text",
-            url: 'http://127.0.0.1:3000/list-log-mahasiswa-xls',
+            url: 'http://127.0.0.1:3000/users/list-log-mahasiswa-xls',
             success: function (data) {
               console.log(data)
               // balik kesini
               // disini udah excel
-              window.location = 'http://127.0.0.1:3000/list-log-mahasiswa-xls';
+              window.location = 'http://127.0.0.1:3000/users/list-log-mahasiswa-xls';
             }
           });
 
@@ -385,9 +379,9 @@
           $.ajax({
             type: 'GET',
             contentType: "text",
-            url: 'http://127.0.0.1:3000/list-log-dosen-xls',
+            url: 'http://127.0.0.1:3000/users/list-log-dosen-xls',
             success: function (data) {
-              window.location = 'http://127.0.0.1:3000/list-log-dosen-xls';
+              window.location = 'http://127.0.0.1:3000/users/list-log-dosen-xls';
             }
           });
 
@@ -405,19 +399,19 @@
 
           var request = $.ajax({
 
-            url: `http://${window.location.hostname}:3000/delete-mhs/${id}`,
+            url: `http://${window.location.hostname}:3000/users/delete-mhs/${id}`,
             type: "POST",
             success: window.location.replace(
-              `http://${window.location.hostname}:3000/list-mahasiswa`)
+              `http://${window.location.hostname}:3000/users/list-mahasiswa`)
           });
         };
 
         function deleteByIdDosen(id){
            var request = $.ajax({
-            url: `http://${window.location.hostname}:3000/delete-dsn/${id}`,
+            url: `http://${window.location.hostname}:3000/users/delete-dsn/${id}`,
             type: "POST",
             success: window.location.replace(
-              `http://${window.location.hostname}:3000/list-dosen`)
+              `http://${window.location.hostname}:3000/users/list-dosen`)
           });
         }
           

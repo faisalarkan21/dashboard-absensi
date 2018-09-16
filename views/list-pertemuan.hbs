@@ -1,0 +1,104 @@
+<div class="right_col" role="main">
+    <div class="">
+        <div class="page-title">
+            <div class="title_left">
+                <h3>List Pertemuan</h3>
+            </div>
+
+            {{!-- <div class="title_right">
+                <div class="col-md-5 col-sm-5 col-xs-12 form-group pull-right top_search">
+                    <div class="input-group">
+                        <input type="text" class="form-control" placeholder="Search for...">
+                        <span class="input-group-btn">
+                            <button class="btn btn-default" type="button">Go!</button>
+                        </span>
+                    </div>
+                </div>
+            </div> --}}
+        </div>
+        {{!-- <a class="btn btn-raised btn-info" href="/add-dsn">Tambah Dosen</a> --}}
+        <div class="clearfix"></div>
+
+        <div class="row">
+            <div class="col-md-12 col-sm-12 col-xs-12">
+                <div class="x_panel">
+                    <div class="x_title">
+                        <h2>Informasi List Pertemuan Kelas {{kelas}}</h2>
+
+                        <div class="clearfix"></div>
+                    </div>
+                    <div class="x_content">
+
+                        <table class="table table-hover">
+                            <tbody>
+                                <tr class="text-center">
+                                   <th>Pertemuan</th>
+                                   <td>Ke - 1</td>
+                                   <td>Ke - 2</td>
+                                   <td>Ke - 3</td>
+                                   <td>Ke - 4</td>
+                                   <td>Ke - 5</td>
+                                   <td>Ke - 6</td>
+                                   <td>Ke - 7</td>
+                                   <td>Ke - 8</td>
+                                   <td>Ke - 9</td>
+                                   <td>Ke - 10</td>
+                                   <td>Ke - 11</td>
+                                   <td>Ke - 12</td>
+                                </tr>
+                        {{#each data}}
+                        <tr>
+                        
+                        <td>
+                            {{this.matkul}}
+                        </td>      
+                         {{#each this.log_dosen}}
+                       
+
+                            {{#if this.id_jadwal}}
+                            <td class="text-center" >
+                                
+                                <a class="btn btn-raised btn-success btn-sm " href="/users/detail-log/{{this.id_log}}">{{this.date_on_sign}}</a>
+                            </td>
+                            {{else}}
+                            <td class="text-center">     
+                                <a class="btn btn-raised btn-primary btn-sm" >NA</a>
+                            </td>
+                            {{/if}}
+
+                            
+                              
+                          {{/each}}
+                                   
+            
+                        {{!-- <td id="btn-edit" class="tengah text-center"> <a class="btn btn-raised btn-info" href="/list-pertemuan/{{this.kelas}}">Informasi Pertemuan</a></td> --}}
+                        </tr>
+                        {{/each}}
+                           
+
+
+                           
+                                   
+                               
+                               
+                           
+                        </table>
+                    </div>
+                </div>
+            </div> <!-- bates atas -->
+
+
+        </div>
+    </div>
+</div>
+</div>
+</div>
+</div>
+
+
+<script>
+
+document.getElementById("nav-hide").classList.remove('nav-md');
+document.getElementById("nav-hide").className += "nav-sm";
+
+</script>
