@@ -20,6 +20,43 @@ hbs.registerHelper('tambahSatu', function (angka) {
   return angka + 1
 });
 
+hbs.registerHelper('tambahSatu', function (angka) {
+  return angka + 1
+});
+
+hbs.registerHelper('isValidMhs', function (value, dateSign) {
+
+  console.log(dateSign)
+  if (dateSign === null) {
+    return '<span class="label label-default">Belum Save Lokasi</span>';
+  } else if (value === null) {
+    return '<span class="label label-info">Belum Terverifikasi</span>';
+  } else if (value === 0) {
+    return '<span class="label label-danger">Tidak Hadir</span>';
+  }else{
+    return  '<span class="label label-success"> Hadir</span>';
+  }
+
+
+});
+
+
+
+hbs.registerHelper('isValidDsn', function (value) {
+
+  console.log(value)
+  if (value === null) {
+    return '<span style="padding:10px; font-size:12px" class="label label-default form-control col-md-7 col-xs-12">Menunggu Konfirmasi</span>';
+  } else if (value === 0) {
+    return '<span style="padding:10px;  font-size:12px" class="label label-danger form-control col-md-7 col-xs-12">Tidak Hadir</span>';
+  }else{
+    return  '<span style="padding:10px;  font-size:12px" class="label label-success form-control col-md-7 col-xs-12">Hadir</span>';
+  }
+
+
+});
+
+
 
 // uncomment after placing your favicon in /public
 //app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
@@ -39,24 +76,24 @@ app.use('/gentelella', express.static(__dirname + '/node_modules/gentelella'));
 
 var pengamananCookies = function (req, res, next) {
   console.log(req.cookies);
-  if (req.cookies.username) 
-      return next();
+  if (req.cookies.username)
+    return next();
 
   res.redirect('/login')
 };
 
 
-  app.use(function(req, res, next){
-    res.locals.user = req.cookies.username;
+app.use(function (req, res, next) {
+  res.locals.user = req.cookies.username;
 
-    next();
-  });
+  next();
+});
 
 
 
 
 app.use('/', index);
-app.use('/users', pengamananCookies , users);
+app.use('/users', pengamananCookies, users);
 
 
 

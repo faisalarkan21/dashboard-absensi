@@ -33,7 +33,8 @@
                       <thead>
                         <tr>
                           <th>#</th>
-                          <th>Kelas</th>                         
+                          <th>Kelas</th>          
+                           <th class="text-center" colspan="3">Action</th>                         
                         </tr>
                       </thead>
                       <tbody>
@@ -43,11 +44,13 @@
                           {{tambahSatu @index}}
                         </td>
                         <td>
-                            {{this.kelas}}
+                          <h5>  {{this.kelas}}</h3>
+                            
                         </td>                     
             
                         <td id="btn-edit" class="tengah text-center"> <a class="btn btn-raised btn-info" href="/users/list-pertemuan/{{this.kelas}}">Informasi Pertemuan</a></td>
-                        
+                        <td class="tengah text-center"> <a  id="btn-delete" onclick="deleteKelas({{this.id}})" class="btn btn-raised btn-danger">Delete</a></td>
+
                         {{/each}}
                       </tbody>
                     </table>

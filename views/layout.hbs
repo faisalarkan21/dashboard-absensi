@@ -86,7 +86,7 @@
                     </li>
                   </ul>
                 </li>
-                <li>
+                {{!-- <li>
                   <a>
                     <i class="fa fa-table"></i>Log Absensi
                     <span class="fa fa-chevron-down"></span>
@@ -100,7 +100,7 @@
                     </li>
 
                   </ul>
-                </li>
+                </li> --}}
 
 
               </ul>
@@ -356,7 +356,7 @@
       <script src="/gentelella/vendors/bootstrap-daterangepicker/daterangepicker.js"></script>
       <script src="/gentelella/build/js/custom.min.js"></script>
       <script>
-
+   var urlParams = new URLSearchParams(window.location.search);
         $("#get-xls-mhs").click(function () {
 
           $.ajax({
@@ -387,6 +387,21 @@
 
         });
 
+        $("#get-xls-pert").click(function () {
+          console.log('masil')
+          $.ajax({
+            type: 'GET',
+            contentType: "text",
+            url: 'http://127.0.0.1:3000/users/list-log-pertemuan-xls?log_id={{{idLog}}}&pert='+urlParams.get('pert')+'&idJadwal='+urlParams.get('idJadwal'),
+            success: function (data) {
+              window.location = 'http://127.0.0.1:3000/users/list-log-pertemuan-xls?log_id={{{idLog}}}&pert='+urlParams.get('pert')+'&idJadwal='+urlParams.get('idJadwal');
+            }
+          });
+
+        });
+
+        
+
 
 
         let data = `{{{getData.kelas}}}`
@@ -414,12 +429,59 @@
               `http://${window.location.hostname}:3000/users/list-dosen`)
           });
         }
-          
+
+          function deleteKelas(id){
+           var request = $.ajax({
+            url: `http://${window.location.hostname}:3001/api/delete-kelas`,
+            type: "POST",
+            data:{
+              id
+            },
+            success: function () {
+                    
+                        location.reload();
+                    
+                }
+        })
+          }
+        function changeLogMhs(id, status){
+           var request = $.ajax({
+            url: `http://${window.location.hostname}:3001/api/change-log-mhs/${id}`,
+            type: "POST",
+            data:{
+              status
+            },
+                success: function () {
+                    
+                        location.reload();
+                    
+                }
+          });
+        }
+
+                function changeLogDsn(id, status){
+           var request = $.ajax({
+            url: `http://${window.location.hostname}:3001/api/change-log-dsn/${id}`,
+            type: "POST",
+            data:{
+              status
+            },
+                success: function () {
+                    
+                        location.reload();
+                    
+                }
+          });
+        }
+        
+
+
+ 
 
         
 
 
-
+    $( ".idPertemuan" ).text('Pertemuan Ke - ' +  urlParams.get('pert') )
 
 
 

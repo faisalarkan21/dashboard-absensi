@@ -9,16 +9,17 @@
               <div class="col-md-12 col-sm-12 col-xs-12">
                 <div class="x_panel">
                   <div class="x_title">
-                    <h2>Detail Log</h2>
+                    <h2>Detail Log Dosen</h2>
 
                     <div class="clearfix"></div>
+                      {{!-- <a id="get-xls-pert"  class="btn btn-raised btn-primary btn-add">Download XLS</a> --}}
                   </div>
                   <div class="x_content">
 
                     <form action="/users/update-dsn" method="POST" class="form-horizontal form-label-left" novalidate>
 
                                           
-                      <span class="section">Detail Petermuan</span>
+                      <span class="section idPertemuan">Detail Petermuan Ke - </span>
                      
                       <div class="item form-group">
                          <p style="color:red">{{error}}</p>
@@ -26,14 +27,14 @@
                         <label class="control-label col-md-3 col-sm-3 col-xs-12" for="name">Name <span class="required">*</span>
                         </label>
                         <div class="col-md-6 col-sm-6 col-xs-12">
-                          <input readonly value="{{getData.nip}}" id="name" class="form-control col-md-7 col-xs-12" data-validate-length-range="6" data-validate-words="2" name="nama" placeholder="Nama Dosen" required="required" type="text">
+                          <input readonly value="{{getDataDosen.nama}}" id="name" class="form-control col-md-7 col-xs-12" data-validate-length-range="6" data-validate-words="2" name="nama" placeholder="Nama Dosen" required="required" type="text">
                         </div>
                       </div>
                       <div class="item form-group">
                         <label class="control-label col-md-3 col-sm-3 col-xs-12" for="email">Email <span class="required">*</span>
                         </label>
                         <div class="col-md-6 col-sm-6 col-xs-12">
-                          <input readonly value="{{getData.email}}" type="email" id="email" name="email" placeholder="Email" required="required" class="form-control col-md-7 col-xs-12">
+                          <input readonly value="{{getDataDosen.email}}" type="email" id="email" name="email" placeholder="Email" required="required" class="form-control col-md-7 col-xs-12">
                         </div>
                       </div>
        
@@ -41,7 +42,7 @@
                         <label class="control-label col-md-3 col-sm-3 col-xs-12" for="number">NIP <span class="required">*</span>
                         </label>
                         <div class="col-md-6 col-sm-6 col-xs-12">
-                          <input readonly value="{{getData.nip}}" type="text" id="number" name="nip" placeholder="53414811" required="required" data-validate-minmax="10,100" class="form-control col-md-7 col-xs-12">
+                          <input readonly value="{{getDataDosen.nip}}" type="text" id="number" name="nip" placeholder="53414811" required="required" data-validate-minmax="10,100" class="form-control col-md-7 col-xs-12">
                         </div>
                       </div>
 
@@ -51,7 +52,7 @@
                         <label class="control-label col-md-3 col-sm-3 col-xs-12" for="number">Longitude <span class="required">*</span>
                         </label>
                         <div class="col-md-6 col-sm-6 col-xs-12">
-                          <input readonly value="{{getData.longitude}}" type="text" id="number" name="nip" placeholder="53414811" required="required" data-validate-minmax="10,100" class="form-control col-md-7 col-xs-12">
+                          <input readonly value="{{getDataDosen.longitude}}" type="text" id="number" name="nip" placeholder="53414811" required="required" data-validate-minmax="10,100" class="form-control col-md-7 col-xs-12">
                         </div>
                       </div>
 
@@ -59,7 +60,7 @@
                         <label class="control-label col-md-3 col-sm-3 col-xs-12" for="number">Latitude <span class="required">*</span>
                         </label>
                         <div class="col-md-6 col-sm-6 col-xs-12">
-                          <input readonly value="{{getData.latitude}}" type="text" id="number" name="nip" placeholder="53414811" required="required" data-validate-minmax="10,100" class="form-control col-md-7 col-xs-12">
+                          <input readonly value="{{getDataDosen.latitude}}" type="text" id="number" name="nip" placeholder="53414811" required="required" data-validate-minmax="10,100" class="form-control col-md-7 col-xs-12">
                         </div>
                       </div>
 
@@ -67,26 +68,221 @@
                         <label class="control-label col-md-3 col-sm-3 col-xs-12" for="number">Waktu Penyimpanan Lokasi <span class="required">*</span>
                         </label>
                         <div class="col-md-6 col-sm-6 col-xs-12">
-                          <input readonly value="{{getData.date_on_sign}}" type="text" id="number" name="nip" placeholder="53414811" required="required" data-validate-minmax="10,100" class="form-control col-md-7 col-xs-12">
+                          <input readonly value="{{getDataDosen.date_on_sign}}" type="text" id="number" name="nip" placeholder="53414811" required="required" data-validate-minmax="10,100" class="form-control col-md-7 col-xs-12">
                         </div>
                       </div>                   
                      
                      
-                      <div class="item form-group">
+                      <div style="margin-bottom:20px" class="item form-group">
                         <label class="control-label col-md-3 col-sm-3 col-xs-12" for="textarea">Alamat <span class="required">*</span>
                         </label>
                         <div class="col-md-6 col-sm-6 col-xs-12">
-                          <textarea readonly  id="textarea" required="required" name="alamat" class="form-control col-md-7 col-xs-12">{{getData.address}}</textarea>
+                          <textarea readonly  id="textarea" required="required" name="alamat" class="form-control col-md-7 col-xs-12">{{getDataDosen.address}}</textarea>
+                        </div>
+                      </div>
+
+                      <div class="item form-group">
+                        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="number">Status<span class="required">*</span>
+                        </label>
+                        <div class="col-md-6 col-sm-6 col-xs-12">
+                          {{{isValidDsn getDataDosen.isValid}}}        
+                        </div>
+                      </div>    
+
+                      <div class="item form-group">
+                        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="textarea">Tindakan <span class="required"></span>
+                        </label>
+                        <div class="col-md-6 col-sm-6 col-xs-12">
+                                                  <div class="btn-group">
+                                            <button data-toggle="dropdown" class="btn btn-primary dropdown-toggle btn-sm" type="button" aria-expanded="false">Pilih Status <span class="caret"></span>
+                                            </button>
+                                            <ul role="menu" class="dropdown-menu">
+                                              <li><a onclick="changeLogDsn({{getDataDosen.id_log_dsn}}, 1)">Status Hadir</a>
+                                              </li>
+                                              <li><a onclick="changeLogDsn({{getDataDosen.id_log_dsn}}, 0)" href="#">Status Tidak Hadir</a>
+                                              </li>
+                                              {{!-- <li><a onclick="changeLogDsn({{getDataDosen.id_log_dsn}}, null)">Belum Save Lokasi</a>
+                                              </li> --}}
+                                            </ul>
+                                            </div>
                         </div>
                       </div>
                      
                       <div class="ln_solid"></div>
                       <div class="form-group">
                         <div class="col-md-6 col-md-offset-3">
-                          <a href="/users/list-pertemuan" class="btn btn-primary">Kembali</a>                         
+                          <a href="/users/list-pertemuan" class="btn btn-info">Kembali</a>                         
                         </div>
                       </div>
                     </form>
+
+                  <div class="x_title">
+                    <h2>Detail Log Mahasiswa</h2>
+
+                    <div class="clearfix"></div>
+                  </div>
+
+                     <span class="section idPertemuan">Pertemuan Ke 1</span>
+                     <div class="left_coal" role="main">
+          <div class="">
+            <div class="page-title">
+              <div class="title_left">
+                <h3>List Mahasiswa</h3>
+              </div>
+              {{!-- <div class="title_right">
+                <div class="col-md-5 col-sm-5 col-xs-12 form-group pull-right top_search">
+                  <div class="input-group">
+                    <input type="text" class="form-control" placeholder="Search for...">
+                    <span class="input-group-btn">
+                      <button class="btn btn-default" type="button">Go!</button>
+                    </span>
+                  </div>
+                </div>
+              </div> --}}
+            </div>
+            <div class="clearfix"></div>
+            <div class="row">
+              <div class="col-md-11 col-sm-11 col-xs-11">
+                <div class="x_panel">
+                  <div class="x_title">
+                    <h2>Informasi Mahasiswa</h2>
+
+                    <div class="clearfix"></div>
+                  </div>
+                  <div class="x_content">                 
+                  <table class="table table-hover">
+                      <thead>
+                        <tr>
+                          <th>#</th>
+                          <th>Nama</th>
+                          <th>Kelas</th>
+                          <th>NPM</th>
+                          <th>Email</th>
+                          <th class="tengah text-center">Status</th>
+                          <th class="tengah text-center">Waktu</th>
+                          <th class="tengah text-center" colspan="3">Action</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+
+                  {{#if getDataMhs}}     
+                    {{#each getDataMhs}}
+                      <tr>
+                          <td>
+                            {{tambahSatu @index}}
+                          </td>
+                          <td>
+                              {{this.nama}}
+                          </td>
+                          <td>
+                              {{this.kelas}}
+                          </td>
+                          <td>
+                              {{this.npm}}
+                          </td>
+                          <td>
+                              {{this.email}}
+                          </td>  
+                          <td class="tengah text-center">
+                            {{{isValidMhs this.isValid this.date_on_sign}}}                          
+                          </td>                 
+                          <td class="tengah text-center">
+                          {{#if this.date_on_sign}}
+                            {{this.date_on_sign}}    
+
+                            {{else}}
+
+                            NA   
+                            {{/if}}                   
+                          </td>                 
+                          <td id="btn-edit" class="tengah text-center"> 
+
+
+
+                          {{#if this.date_on_sign}}
+                                                    <div class="btn-group">
+                                            <button data-toggle="dropdown" class="btn btn-primary dropdown-toggle btn-sm" type="button" aria-expanded="false">Pilih Status <span class="caret"></span>
+                                            </button>
+                                            <ul role="menu" class="dropdown-menu">
+                                              <li><a onclick="changeLogMhs({{this.id_log_mhs}}, 1)">Status Hadir</a>
+                                              </li>
+                                              <li><a onclick="changeLogMhs({{this.id_log_mhs}}, 0)" href="#">Status Tidak Hadir</a>
+                                              </li>
+                                              {{!-- <li><a onclick="changeLogMhs({{this.id_log_mhs}}, null)">Belum Save Lokasi</a>
+                                              </li> --}}
+                                            </ul>
+                                            </div>
+
+                            {{else}}
+
+                                                   <div class="btn-group">
+                                            <button disabled data-toggle="dropdown" class="btn btn-primary dropdown-toggle btn-sm" type="button" aria-expanded="false">Pilih Status <span class="caret"></span>
+                                            </button>
+                                            <ul role="menu" class="dropdown-menu">
+                                              <li><a onclick="changeLogMhs({{this.id_log_mhs}}, 1)">Status Hadir</a>
+                                              </li>
+                                              <li><a onclick="changeLogMhs({{this.id_log_mhs}}, 0)" href="#">Status Tidak Hadir</a>
+                                              </li>
+                                              {{!-- <li><a onclick="changeLogMhs({{this.id_log_mhs}}, null)">Belum Save Lokasi</a>
+                                              </li> --}}
+                                            </ul>
+                                            </div>
+                            {{/if}}                   
+
+
+
+                          </td>
+                          {{!-- <td class="tengah text-center"> <a  id="btn-delete" onclick="deleteLogById({{this.npm}})" class="btn btn-raised btn-info">Delete</a></td> --}}
+                        </tr>
+                          {{/each}}
+                      {{else}}
+
+  <tr>
+                          <td>
+                            Tidak ada data
+                          </td>
+                          <td>
+                              Tidak ada data
+                          </td>
+                          <td>
+                               Tidak ada data
+                          </td>
+                          <td>
+                                Tidak ada data
+                          </td>
+                          <td>
+                               Tidak ada data
+                          </td>  
+                          <td>
+                             Tidak ada data           
+                          </td>                 
+                          <td>
+                              Tidak ada data                     
+                          </td>     
+                           <td>
+                              Tidak ada tindakan                     
+                          </td>                 
+                          {{!-- <td id="btn-edit" class="tengah text-center"> <a class="btn btn-raised btn-info" href="/users/update-mhs/{{this.npm}}">Update</a></td>
+                          <td class="tengah text-center"> <a  id="btn-delete" onclick="deleteById({{this.npm}})" class="btn btn-raised btn-info">Delete</a></td> --}}
+                        </tr>
+
+
+
+
+                      {{/if}}
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
+              </div>       
+            </div>
+          </div>
+        </div>
+
+
+
+
+
                   </div>
                 </div>
               </div>

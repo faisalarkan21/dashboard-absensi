@@ -79,7 +79,7 @@ router.get('/list-pertemuan/:kelas', function (req, res, next) {
     })
     .then(function (response) {
       // handle success
-      console.log(response.data.data[0].log_dosen[0]);
+      // console.log(response.data.data[0].log_dosen[0]);
 
       res.render('list-pertemuan', {
         data: response.data.data,
@@ -140,6 +140,28 @@ router.post('/post-dsn', function (req, res, next) {
       console.log(error);
     });
 });
+
+
+router.post('/post-kelas', function (req, res, next) {
+  axios.post(BASE_URL + '/add-kelas', req.body)
+    .then(function (response) {
+      
+      if (response.data === 'OK') {
+        res.redirect('/users/list-pertemuan')
+      }
+    })
+    .catch(function (error) {
+      console.log(error);
+    });
+});
+
+
+
+router.get('/add-kelas', function (req, res, next) {
+  res.render('add-kelas')
+});
+
+
 
 router.post('/post-mhs', function (req, res, next) {
 
@@ -389,6 +411,43 @@ router.get('/list-log-mahasiswa', function (req, res, next) {
     });
 });
 
+router.get('/list-log-pertemuan-xls', function (req, res, next) {
+  console.log(req.query)
+  axios.get(BASE_URL + '/get-log', {
+    params: {
+      id: req.query.log_id,
+      idPert: req.query.pert,
+      idJadwal: req.query.idJadwal
+    }
+  })
+    .then(function (response) {
+      // handle success
+      console.log('Menerima Data');
+      // console.log(response.data.data);
+
+     let {logMhs, logDosen} = response.data.data;
+
+    //  Array.prototype.push.apply(logDosen, logMhs);
+
+      
+
+      Object.assign({logDosen}, logMhs)
+
+      console.log(logDosen)
+      /**
+       * Ngerubah array mahasiswa jdi xlsx
+       */
+      res.xls('data-log-pert.xlsx', logDosen);
+    })
+    .catch(function (error) {
+      // handle error
+      console.log(error);
+    })
+    .then(function () {
+      // always executed
+    });
+});
+
 router.get('/list-log-mahasiswa-xls', function (req, res, next) {
   axios.get(BASE_URL + '/get-all-log-mhs-xls')
     .then(function (response) {
@@ -396,6 +455,7 @@ router.get('/list-log-mahasiswa-xls', function (req, res, next) {
       console.log('Menerima Data');
       console.log(response.data.data);
 
+      
       /**
        * Ngerubah array mahasiswa jdi xlsx
        */
@@ -450,17 +510,21 @@ router.get('/list-log-dosen', function (req, res, next) {
 
 
 router.get('/detail-log/:log_id', function (req, res, next) {
-  console.log(req.params.log_id)
+  // console.log(req.params.log_id)
   axios.get(BASE_URL + '/get-log', {
       params: {
-        id: req.params.log_id
+        id: req.params.log_id,
+        idPert: req.query.pert,
+        idJadwal: req.query.idJadwal
       }
     })
     .then(function (response) {
       // handle success
-      console.log(response.data);
+      console.log(response.data.data.logMhs);
       res.render('detail-pertemuan', {
-        getData: response.data.data
+        getDataDosen: response.data.data.logDosen,
+        idLog: req.params.log_id,
+        getDataMhs: response.data.data.logMhs[0] === null ? null : response.data.data.logMhs
       });
     })
     .catch(function (error) {
